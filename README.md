@@ -2,7 +2,7 @@
 
 Fluid Image Container for Svelte
 
-[See Live Demo][repl]
+[See On REPL][repl]
 
 | Traditional | svelte-image-gallery |
 | ----------- | -------------------- |
