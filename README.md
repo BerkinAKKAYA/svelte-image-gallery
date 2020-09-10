@@ -2,6 +2,8 @@
 
 Fluid Image Container for Svelte
 
+[See Live Demo][repl]
+
 | Traditional | svelte-image-gallery |
 | ----------- | -------------------- |
 | ![traditional][ss1] | ![svelte-image-gallery][ss2] |
@@ -9,11 +11,12 @@ Fluid Image Container for Svelte
 
 [ss1]: https://i.imgur.com/rTSftEw.jpg
 [ss2]: https://i.imgur.com/CpgVaWm.jpg
-[minmax]: https://css-tricks.com/intrinsically-responsive-css-grid-with-minmax-and-min/
+[minmax]: https://css-tricks.com/intrinsically-responsive-css-grid-with-minmax-and-min
+[repl]: https://svelte.dev/repl/29b37509123b4a4bac808531f39d7d9e?version=3.24.1
 
 ### Installation
 
-run `npm i svelte-image-gallery --save-dev`
+**RUN** `npm i svelte-image-gallery --save-dev`
 
 ### Usage
 
@@ -32,6 +35,7 @@ run `npm i svelte-image-gallery --save-dev`
 ### Parameters
 
 | Parameter  | Default | Description                 |
+| ---------  | ------- | -----------                 |
 | gap        | 10      | Grid Gap Between Items (px) |
 | breakpoint | 250     | Maximum Image Width         |
 
