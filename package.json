@@ -1,0 +1,14 @@
+{
+  "name": "svelte-image-gallery",
+  "version": "1.0.2",
+  "description": "Fluid Image Container for Svelte",
+  "main": "Gallery.svelte",
+  "scripts": {},
+  "keywords": [],
+  "author": "Berkin AKKAYA <berkin_akkaya@hotmail.com>",
+  "license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/berkinakkaya/svelte-image-gallery"
+	}
+}
