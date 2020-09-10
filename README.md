@@ -15,12 +15,13 @@ Fluid Image Container for Svelte
 [repl]: https://svelte.dev/repl/29b37509123b4a4bac808531f39d7d9e?version=3.24.1
 
 ### Installation
-
-**RUN** `npm i svelte-image-gallery --save-dev`
+```sh
+npm i svelte-image-gallery --save-dev
+```
 
 ### Usage
 
-``` svelte
+```svelte
 <script>
 	import Gallery from 'svelte-image-gallery'
 </script>
