@@ -9,27 +9,35 @@
     let columnCount = 0;
     let columns = [];
     let gallery = null;
+    let slotHeight = 0;
+    let main = null;
+    let childCount = 0;
 
     onMount(async () => {
-        const main = document.querySelector("#slotHolder");
-        urls = Array.from(main.childNodes).filter(a => a.src).map(a => a.src);
-    })
+        main = document.querySelector("#slotHolder");
+    });
 
     $: columnCount = parseInt(clientWidth / breakpoint);
+    $: if (slotHeight) { childCount = main ? main.childNodes.length : 0 };
     $: {
-        if (columnCount) {
-            columns = [];
-
-            for (let i=0; i<columnCount; i++) {
-                columns[i] = [urls[i]];
-            }
-
-            Draw(columnCount);
+        if (columnCount && urls && childCount) {
+            Redraw();
         }
     }
 
+    function Redraw() {
+        urls = main ? Array.from(main.childNodes).filter(a => a.src).map(a => a.src) : [];
+        columns = [];
+
+        for (let i=0; i<columnCount; i++) {
+            columns[i] = [urls[i]];
+        }
+
+        Draw(columnCount);
+    }
+
     async function Draw(i) {
-        if (i == urls.length) { return }
+        if (isNaN(i) || i >= urls.length) { return }
 
         const col = SmallestColumn();
         columns[col] = [...columns[col] || [], urls[i]];
@@ -58,7 +66,7 @@
     }
 </script>
 
-<div id="slotHolder" style="display: none"><slot></slot></div>
+<div id="slotHolder" bind:clientHeight={slotHeight}><slot></slot></div>
 
 {#if columns}
     <div id="gallery" bind:this={gallery} bind:clientWidth style="grid-template-columns: repeat({columnCount}, 1fr); --gap: {gap}px">
@@ -82,4 +90,10 @@
         border: 1px solid white;
     }
     #gallery .column *:nth-child(1) { margin-top: 0 }
+    #slotHolder {
+        display: grid;
+        grid-template-columns: 1fr;
+        position: absolute;
+        visibility: hidden;
+    }
 </style>
