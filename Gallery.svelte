@@ -19,8 +19,6 @@
     function Draw() {
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
 
-        // TODO: Try sorting images by their height!
-
         columns = [...Array(columnCount).keys()].map(() => []);
         for (let i=0; i<images.length; i++) {
             columns[i % columnCount].push(images[i].src);
