@@ -9,6 +9,7 @@
     
     $: columnCount = parseInt(galleryWidth / maxColumnWidth);
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
+    $: columnCount && Draw();
 
     function Draw() {
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
@@ -23,7 +24,7 @@
     }
 </script>
 
-<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={ Draw }>
+<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={Draw}>
     <slot></slot>
 </div>
 
