@@ -1,46 +1,46 @@
 <script>
-    import { onMount } from "svelte";
-
     export let gap = 10;
-    export let breakpoint = 250;
+    export let maxColumnWidth = 250;
 
     let slotHolder = null;
     let columns = [];
     let galleryWidth = 0;
     let columnCount = 0;
     
-    $: columnCount = parseInt(galleryWidth / breakpoint);
-
-    onMount(() => {
-        slotHolder = document.querySelector("#slotHolder");
-        slotHolder.addEventListener("DOMNodeInserted", Draw);
-    })
+    $: columnCount = parseInt(galleryWidth / maxColumnWidth);
+    $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
 
     function Draw() {
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
 
+        // Generate an array of empty arrays ([[] * columnCount])
         columns = [...Array(columnCount).keys()].map(() => []);
+
+        // Fill the columns with image URLs
         for (let i=0; i<images.length; i++) {
             columns[i % columnCount].push(images[i].src);
         }
     }
 </script>
 
-<div id="slotHolder" style="display: none"><slot></slot></div>
+<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={ Draw }>
+    <slot></slot>
+</div>
 
 {#if columns}
-    <div id="gallery" bind:clientWidth={galleryWidth} style="grid-template-columns: repeat({columnCount}, 1fr); --gap: {gap}px">
-        {#each columns as column}
-            <div class="column">
-                {#each column as url}
-                    <img src={url} alt="" />
-                {/each}
-            </div>
+<div id="gallery" bind:clientWidth={galleryWidth} style={galleryStyle}>
+    {#each columns as column}
+    <div class="column">
+        {#each column as url}
+        <img src={url} alt="" />
         {/each}
     </div>
+    {/each}
+</div>
 {/if}
 
 <style>
+    #slotHolder { display: none }
     #gallery { width: 100%; display: grid; gap: var(--gap) }
     #gallery .column { display: flex; flex-direction: column }
     #gallery .column * {
