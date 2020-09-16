@@ -15,7 +15,7 @@ Fluid Image Container for Svelte
 [repl]: https://svelte.dev/repl/29b37509123b4a4bac808531f39d7d9e?version=3.24.1
 
 ### Installation
-```sh
+```
 npm i svelte-image-gallery --save-dev
 ```
 
@@ -41,9 +41,9 @@ npm i svelte-image-gallery --save-dev
 
 ### Parameters
 
-| Parameter  | Default | Description                 |
-| ---------  | ------- | -----------                 |
-| gap        | 10      | Grid Gap Between Items (px) |
-| breakpoint | 250     | Maximum Image Width         |
+| Parameter      | Default | Description                 |
+| -------------- | ------- | -----------                 |
+| gap            | 10      | Grid Gap Between Items (px) |
+| maxColumnWidth | 250     | Maximum Column Width (px)   |
 
 > Created By [Berkin AKKAYA](https://berkinakkaya.github.io)
