@@ -33,6 +33,12 @@ npm i svelte-image-gallery --save-dev
 </Gallery>
 ```
 
+### Running Locally
+
+* Clone the repository
+* Open `example` folder in terminal
+* Run `npm i`, then `npm run dev`
+
 ### Parameters
 
 | Parameter  | Default | Description                 |
