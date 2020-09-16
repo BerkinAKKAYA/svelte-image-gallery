@@ -4,72 +4,34 @@
     export let gap = 10;
     export let breakpoint = 250;
 
-    let clientWidth = 0;
-    let urls = [];
-    let columnCount = 0;
+    let slotHolder = null;
     let columns = [];
-    let gallery = null;
-    let slotHeight = 0;
-    let main = null;
-    let childCount = 0;
+    let galleryWidth = 0;
+    let columnCount = 0;
+    
+    $: columnCount = parseInt(galleryWidth / breakpoint);
 
-    onMount(async () => {
-        main = document.querySelector("#slotHolder");
-    });
+    onMount(() => {
+        slotHolder = document.querySelector("#slotHolder");
+        slotHolder.addEventListener("DOMNodeInserted", Draw);
+    })
 
-    $: columnCount = parseInt(clientWidth / breakpoint);
-    $: if (slotHeight) { childCount = main ? main.childNodes.length : 0 };
-    $: {
-        if (columnCount && urls && childCount) {
-            Redraw();
+    function Draw() {
+        const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
+
+        // TODO: Try sorting images by their height!
+
+        columns = [...Array(columnCount).keys()].map(() => []);
+        for (let i=0; i<images.length; i++) {
+            columns[i % columnCount].push(images[i].src);
         }
-    }
-
-    function Redraw() {
-        urls = main ? Array.from(main.childNodes).filter(a => a.src).map(a => a.src) : [];
-        columns = [];
-
-        for (let i=0; i<columnCount; i++) {
-            columns[i] = [urls[i]];
-        }
-
-        Draw(columnCount);
-    }
-
-    async function Draw(i) {
-        if (isNaN(i) || i >= urls.length) { return }
-
-        const col = SmallestColumn();
-        columns[col] = [...columns[col] || [], urls[i]];
-
-        await new Promise((resolve, reject) => setTimeout(resolve, 0))
-        Draw(i + 1);
-    }
-
-    function SmallestColumn() {
-        const HeightOf = column => {
-            let height = 0;
-            column.childNodes.forEach(el => { height += el.height || 0 });
-            return height;
-        }
-
-        const columns = gallery.querySelectorAll(".column");
-        let min = 0;
-
-        for (let i=0; i<columns.length; i++) {
-            if (HeightOf(columns[i]) < HeightOf(columns[min])) {
-                min = i;
-            }
-        }
-
-        return min;
     }
 </script>
 
-<div id="slotHolder" bind:clientHeight={slotHeight}><slot></slot></div>
+<div id="slotHolder" style="display: none"><slot></slot></div>
 
 {#if columns}
-    <div id="gallery" bind:this={gallery} bind:clientWidth style="grid-template-columns: repeat({columnCount}, 1fr); --gap: {gap}px">
+    <div id="gallery" bind:clientWidth={galleryWidth} style="grid-template-columns: repeat({columnCount}, 1fr); --gap: {gap}px">
         {#each columns as column}
             <div class="column">
                 {#each column as url}
@@ -90,10 +52,4 @@
         border: 1px solid white;
     }
     #gallery .column *:nth-child(1) { margin-top: 0 }
-    #slotHolder {
-        display: grid;
-        grid-template-columns: 1fr;
-        position: absolute;
-        visibility: hidden;
-    }
 </style>
