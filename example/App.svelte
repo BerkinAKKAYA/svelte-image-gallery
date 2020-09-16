@@ -2,7 +2,7 @@
     import Gallery from '../Gallery.svelte';
 </script>
 
-<Gallery gap="15" breakpoint="250">
+<Gallery gap="15" maxColumnWidth="250">
 	<img src="https://via.placeholder.com/210x170/100" alt="">
 	<img src="https://via.placeholder.com/180x200/100" alt="">
 	<img src="https://via.placeholder.com/200x480/100" alt="">
