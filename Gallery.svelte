@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from 'svelte';
+
     export let gap = 10;
     export let maxColumnWidth = 250;
 
@@ -7,11 +9,15 @@
     let galleryWidth = 0;
     let columnCount = 0;
     
-    $: columnCount = parseInt(galleryWidth / maxColumnWidth);
+    $: columnCount = parseInt(galleryWidth / maxColumnWidth) || 1;
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
     $: columnCount && Draw();
 
+    onMount(Draw);
+
     function Draw() {
+        if (!slotHolder) { return }
+
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
 
         // Generate an array of empty arrays ([[] * columnCount])
