@@ -41,9 +41,9 @@ npm install --save-dev svelte-image-gallery
 
 ### Parameters
 
-| Parameter      | Default | Description                 |
-| -------------- | ------- | -----------                 |
-| gap            | 10      | Grid Gap Between Items (px) |
-| maxColumnWidth | 250     | Maximum Column Width (px)   |
+| Parameter      | Default | Description            | Unit |
+| -------------- | ------- | -----------            | ---- |
+| gap            | 10      | Grid Gap Between Items | px   |
+| maxColumnWidth | 250     | Maximum Column Width   | px   |
 
 > Created By [Berkin AKKAYA](https://berkinakkaya.github.io)
