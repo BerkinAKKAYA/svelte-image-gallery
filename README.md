@@ -1,5 +1,7 @@
 # svelte-image-gallery
 
+[![MadeWithSvelte.com shield](https://madewithsvelte.com/storage/repo-shields/2648-shield.svg)](https://madewithsvelte.com/p/svelte-image-gallery/shield-link)
+
 Fluid Image Container for Svelte
 
 [See On REPL][repl]
