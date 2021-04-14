@@ -29,7 +29,7 @@
     }
 </script>
 
-<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={Draw}>
+<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={Draw} on:DOMNodeRemoved={Draw}>
     <slot></slot>
 </div>
 
