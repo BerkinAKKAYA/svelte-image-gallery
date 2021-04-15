@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import { tick } from 'svelte';
     
     export let gap = 10;
     export let maxColumnWidth = 250;
@@ -15,7 +16,10 @@
     
     onMount(Draw);
 
-    function Draw() {
+    async function Draw() {
+        
+        await tick();
+        
         if (!slotHolder) { return }
 
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
@@ -29,7 +33,7 @@
     }
 </script>
 
-<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={Draw}>
+<div id="slotHolder" bind:this={slotHolder} on:DOMNodeInserted={Draw} on:DOMNodeRemoved={Draw}>
     <slot></slot>
 </div>
 
