@@ -1,6 +1,7 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, createEventDispatcher } from 'svelte';
     import { tick } from 'svelte';
+	const dispatch = createEventDispatcher();
     
     export let gap = 10;
     export let maxColumnWidth = 250;
@@ -15,6 +16,12 @@
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
     
     onMount(Draw);
+
+    function handleClick(e) {
+		dispatch('click', {
+			url: e.target.src
+		});
+	}
 
     async function Draw() {
         
@@ -42,7 +49,7 @@
     {#each columns as column}
     <div class="column">
         {#each column as url}
-        <img src={url} alt="" />
+        <img src={url} alt="" on:click={handleClick}/>
         {/each}
     </div>
     {/each}
