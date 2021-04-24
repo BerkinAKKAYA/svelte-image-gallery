@@ -1,12 +1,12 @@
 <script>
     import Gallery from '../Gallery.svelte';
 
-	function handleClick(e) {
-		console.log(e.detail.url)
+	function HandleClick(e) {
+		console.log(e.detail.src)
 	}
 </script>
 
-<Gallery gap={15} maxColumnWidth={250} on:click={handleClick}>
+<Gallery gap={15} maxColumnWidth={250} on:click={HandleClick}>
 	<img src="https://via.placeholder.com/210x170/100" alt="">
 	<img src="https://via.placeholder.com/180x200/100" alt="">
 	<img src="https://via.placeholder.com/200x210/100" alt="">

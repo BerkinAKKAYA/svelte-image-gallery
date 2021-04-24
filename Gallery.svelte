@@ -1,32 +1,30 @@
 <script>
     import { onMount, createEventDispatcher } from 'svelte';
     import { tick } from 'svelte';
-	const dispatch = createEventDispatcher();
-    
+
     export let gap = 10;
     export let maxColumnWidth = 250;
-    
+
+	const dispatch = createEventDispatcher();
+
     let slotHolder = null;
     let columns = [];
     let galleryWidth = 0;
     let columnCount = 0;
-    
+
     $: columnCount = parseInt(galleryWidth / maxColumnWidth) || 1;
     $: columnCount && Draw();
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
-    
+
     onMount(Draw);
 
-    function handleClick(e) {
-		dispatch('click', {
-			url: e.target.src
-		});
+    function HandleClick (e) {
+        dispatch('click', { src: e.target.src });
 	}
 
     async function Draw() {
-        
         await tick();
-        
+
         if (!slotHolder) { return }
 
         const images = Array.from(slotHolder.childNodes).filter(child => child.tagName === "IMG");
@@ -49,7 +47,7 @@
     {#each columns as column}
     <div class="column">
         {#each column as url}
-        <img src={url} alt="" on:click={handleClick}/>
+        <img src={url} alt="" on:click={HandleClick}/>
         {/each}
     </div>
     {/each}
