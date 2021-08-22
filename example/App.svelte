@@ -1,5 +1,6 @@
 <script>
-    import Gallery from '../Gallery.svelte';
+    import Gallery from '../index.js';
+	// import Gallery from 'svelte-image-gallery'
 
 	function HandleClick(e) {
 		console.log(e.detail.src)
