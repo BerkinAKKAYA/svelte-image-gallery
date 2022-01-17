@@ -41,7 +41,7 @@
             const idx = i % columnCount;
             columns[idx] = [
                 ...(columns[idx] || []),
-                { src: images[i].src, alt: images[i].alt },
+                { src: images[i].src, alt: images[i].alt, class: images[i].className },
             ];
         }
     }
@@ -65,7 +65,7 @@
                         src={img.src}
                         alt={img.alt}
                         on:click={HandleClick}
-                        class={hover === true ? "img-hover" : ""}
+                        class="{hover === true ? "img-hover" : ""} {img.class}"
                         loading={loading}
                     />
                 {/each}
