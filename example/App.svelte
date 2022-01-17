@@ -2,12 +2,24 @@
 	import Gallery from "../Gallery.svelte";
 
 	function HandleClick(e) {
-		console.log(`src: ${e.detail.src}, alt: ${e.detail.alt}, loading: ${e.detail.loading}, class: ${e.detail.class}`)
+		console.log(
+			`src: ${e.detail.src}, alt: ${e.detail.alt}, loading: ${e.detail.loading}, class: ${e.detail.class}`
+		);
 	}
 </script>
 
-<Gallery gap={15} maxColumnWidth={250} on:click={HandleClick} hover={true} loading="lazy">
-	<img src="https://via.placeholder.com/210x170/100" alt="210x170" class="Hi" />
+<Gallery
+	gap={15}
+	maxColumnWidth={250}
+	on:click={HandleClick}
+	hover={true}
+	loading="lazy"
+>
+	<img
+		src="https://via.placeholder.com/210x170/100"
+		alt="210x170"
+		class="Hi"
+	/>
 	<img src="https://via.placeholder.com/180x200/100" alt="180x200" />
 	<img src="https://via.placeholder.com/200x210/100" alt="200x210" />
 	<img src="https://via.placeholder.com/140x250/100" alt="140x250" />
