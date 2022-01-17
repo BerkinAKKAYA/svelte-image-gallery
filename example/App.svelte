@@ -17,10 +17,10 @@
 	<img src="https://via.placeholder.com/180x150/100" alt="180x150">
 	<img src="https://via.placeholder.com/210x210/100" alt="210x210">
 	<img src="https://via.placeholder.com/200x200/100" alt="200x200">
-	<img src="https://via.placeholder.com/200x200/100" alt="200x200">
+	<img src="https://via.placeholder.com/220x200/100" alt="220x200">
 	<img src="https://via.placeholder.com/180x310/100" alt="180x310">
 	<img src="https://via.placeholder.com/210x210/100" alt="210x210">
 	<img src="https://via.placeholder.com/200x280/100" alt="200x280">
 	<img src="https://via.placeholder.com/210x350/100" alt="210x350">
-	<img src="https://via.placeholder.com/210x350/100" alt="210x350">
+	<img src="https://via.placeholder.com/180x270/100" alt="180x270">
 </Gallery>
