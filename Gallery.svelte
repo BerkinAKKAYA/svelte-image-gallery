@@ -33,7 +33,7 @@
         // Fill the columns with image URLs
         for (let i=0; i<images.length; i++) {
             const idx = i % columnCount;
-            columns[idx] = [...columns[idx] || [], images[i].src];
+            columns[idx] = [...columns[idx] || [], {src: images[i].src, alt: images[i].alt}];
         }
     }
 </script>
@@ -46,8 +46,8 @@
 <div id="gallery" bind:clientWidth={galleryWidth} style={galleryStyle}>
     {#each columns as column}
     <div class="column">
-        {#each column as url}
-        <img src={url} alt="" on:click={HandleClick}/>
+        {#each column as img}
+        <img src={img.src} alt={img.alt} on:click={HandleClick}/>
         {/each}
     </div>
     {/each}
