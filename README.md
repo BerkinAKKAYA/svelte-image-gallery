@@ -52,6 +52,8 @@ npm install --save-dev svelte-image-gallery
 | -------------- | ------- | ---------------------- | ---- |
 | gap            | 10      | Grid Gap Between Items | px   |
 | maxColumnWidth | 250     | Maximum Column Width   | px   |
+| hover 		 | false   | Enlarge Image on Hover |      |
+| loading		 | eager   | Image Loading Type		|      |
 
 To access the image url on click, use the `on:click` directive in the Gallery component.
 
