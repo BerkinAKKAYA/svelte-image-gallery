@@ -18,7 +18,7 @@
 	<img
 		src="https://via.placeholder.com/210x170/100"
 		alt="210x170"
-		class="Hi"
+		class="hi"
 	/>
 	<img src="https://via.placeholder.com/180x200/100" alt="180x200" />
 	<img src="https://via.placeholder.com/200x210/100" alt="200x210" />
