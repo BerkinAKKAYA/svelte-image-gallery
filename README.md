@@ -29,7 +29,7 @@ npm install --save-dev svelte-image-gallery
 	import Gallery from 'svelte-image-gallery'
 
 	function handleClick(e) {
-		console.log(e.detail.url)
+		console.log(e.detail.src)
 	}
 </script>
 
