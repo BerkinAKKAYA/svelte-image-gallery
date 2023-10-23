@@ -1,6 +1,6 @@
 {
 	"name": "svelte-image-gallery",
-	"version": "1.7.0",
+	"version": "1.7.1",
 	"description": "A Masonry-Like Image Container for Svelte",
 	"main": "index.mjs",
 	"module": "index.mjs",
