@@ -3,6 +3,8 @@
 	"version": "1.7.0",
 	"description": "A Masonry-Like Image Container for Svelte",
 	"main": "index.mjs",
+	"module": "index.mjs",
+	"svelte": "index.mjs",
 	"scripts": {},
 	"keywords": [],
 	"author": "Berkin AKKAYA <berkin_akkaya@hotmail.com>",
