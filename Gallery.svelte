@@ -1,25 +1,61 @@
 <script>
-    import { onMount, createEventDispatcher } from "svelte";
+// @ts-nocheck
+
+    import { onMount, onDestroy, createEventDispatcher } from "svelte";
     import { tick } from "svelte";
 
+	/**
+	 * @type {number}
+	 */
     export let gap = 10;
+
+	/**
+	 * @type {number}
+	 */
     export let maxColumnWidth = 250;
+
+	/**
+	 * @type {boolean}
+	 */
     export let hover = false;
-    export let loading;
+
+	/**
+	 * @type {'eager' | 'lazy'}
+	 */
+    export let loading = 'lazy';
 
     const dispatch = createEventDispatcher();
 
+	/**
+	 * @type {HTMLElement | null}
+	 */
     let slotHolder = null;
+
+	/**
+	 * @type {HTMLImageElement[]}
+	 */
     let columns = [];
+
+	/**
+	 * @type {number}
+	 */
     let galleryWidth = 0;
+
+	/**
+	 * @type {number}
+	 */
     let columnCount = 0;
 
+    // @ts-ignore
     $: columnCount = parseInt(galleryWidth / maxColumnWidth) || 1;
     $: columnCount && Draw();
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
 
     onMount(Draw);
+	onDestroy(Draw)
 
+	
+	// @ts-ignore
     function HandleClick(e) {
         dispatch("click", { src: e.target.src, alt: e.target.alt, loading: e.target.loading, class: e.target.className });
     }
@@ -32,15 +68,23 @@
         }
 
         const images = Array.from(slotHolder.childNodes).filter(
+            // @ts-ignore
             (child) => child.tagName === "IMG"
         );
+
+		/**
+		 * @type {HTMLImageElement[]}
+		 */
         columns = [];
 
         // Fill the columns with image URLs
         for (let i = 0; i < images.length; i++) {
             const idx = i % columnCount;
+			// @ts-ignore
             columns[idx] = [
+				// @ts-ignore
                 ...(columns[idx] || []),
+				// @ts-ignore
                 { src: images[i].src, alt: images[i].alt, class: images[i].className },
             ];
         }
@@ -50,8 +94,6 @@
 <div
     id="slotHolder"
     bind:this={slotHolder}
-    on:DOMNodeInserted={Draw}
-    on:DOMNodeRemoved={Draw}
 >
     <slot />
 </div>
@@ -65,6 +107,7 @@
                         src={img.src}
                         alt={img.alt}
                         on:click={HandleClick}
+						on:keydown={HandleClick}
                         class="{hover === true ? "img-hover" : ""} {img.class}"
                         loading={loading}
                     />
