@@ -40,6 +40,13 @@ npm install --save-dev svelte-image-gallery
 </Gallery>
 ```
 
+Each `<img>` *can't be a child of another element*. The component generates a new `<img>` for each, keeping the following attributes:
+
+- `src`
+- `alt`
+- `class`
+- `style`
+
 ### Running Locally
 
 -   Clone the repository

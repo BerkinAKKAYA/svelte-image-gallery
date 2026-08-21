@@ -85,7 +85,7 @@
 				// @ts-ignore
                 ...(columns[idx] || []),
 				// @ts-ignore
-                { src: images[i].src, alt: images[i].alt, class: images[i].className },
+                { src: images[i].src, alt: images[i].alt, class: images[i].className, style: images[i].style.cssText },
             ];
         }
     }
@@ -106,6 +106,7 @@
                     <img
                         src={img.src}
                         alt={img.alt}
+                        style="{img.style}"
                         on:click={HandleClick}
 						on:keydown={HandleClick}
                         class="{hover === true ? "img-hover" : ""} {img.class}"
